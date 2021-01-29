@@ -1,25 +1,25 @@
-﻿using MediatR;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MediatR;
 using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Domain.Core.Commands;
 using MicroRabbit.Domain.Core.Events;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MicroRabbit.Infa.Bus
+namespace MicroRabbit.Infra.Bus
 {
-    public sealed class RabbitMQBus : IEventBus
+    public sealed class RabbitMqBus : IEventBus
     {
         private readonly IMediator _mediator;
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _eventTypes;
 
-        public RabbitMQBus(IMediator mediator)
+        public RabbitMqBus(IMediator mediator)
         {
             _mediator = mediator;
             _handlers = new Dictionary<string, List<Type>>();
